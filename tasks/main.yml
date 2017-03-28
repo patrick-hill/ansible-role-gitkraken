@@ -63,3 +63,11 @@
   become: yes
   apt:
     deb: '{{ gitkraken_download_dir }}/{{ gitkraken_redis_filename }}'
+
+- name: symlink backup directory
+  file:
+    dest: '/home/{{ os_username }}/.gitkraken'
+    src:  '{{ gitkraken_backup_src_dir }}'
+    state: link
+  when: gitkraken_backup_use_symlink and gitkraken_backup_src_dir is defined
+
