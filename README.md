@@ -30,6 +30,12 @@ gitkraken_redis_url: https://release.gitkraken.com/linux/gitkraken-amd64.deb
 
 # Directory to store files downloaded for GitKraken installation
 gitkraken_download_dir: "{{ x_ansible_download_dir | default('~/.ansible/tmp/downloads') }}"
+
+# Should the config dir be replaced with a symlink to a backup directory
+gitkraken_backup_use_symlink: false
+
+# Directory of source dir to symlink to ~/.gitkraken
+gitkraken_backup_src_dir: '' # Must be defined to use & above boolean must be set to true
 ```
 
 Example Playbook
@@ -40,6 +46,15 @@ Example Playbook
   roles:
      - { role: gantsign.gitkraken }
 ```
+```yaml
+- hosts: servers
+  vars:
+    - os_username: myUserName
+    - gitkraken_backup_use_symlink: true
+    - gitkraken_backup_src_dir: /path/to/your/backup/dir
+  roles:
+     - { role: gantsign.gitkraken }
+```   
 
 More Roles From GantSign
 ------------------------
