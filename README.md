@@ -36,6 +36,10 @@ gitkraken_backup_use_symlink: false
 
 # Directory of source dir to symlink to ~/.gitkraken
 gitkraken_backup_src_dir: '' # Must be defined to use & above boolean must be set to true
+
+# Default way to detect the home directory for use with the backup directory
+# This is not ideal as this will report the user that Ansible is running as
+os_username: "{{ lookup('env','USER') }}"
 ```
 
 Example Playbook
