@@ -66,8 +66,7 @@
 
 - name: symlink backup directory
   file:
-    dest: '/home/{{ os_username }}/.gitkraken'
     src:  '{{ gitkraken_backup_src_dir }}'
+    dest: '/home/{{ os_username }}/.gitkraken'
     state: link
   when: gitkraken_backup_use_symlink and gitkraken_backup_src_dir is defined
-
